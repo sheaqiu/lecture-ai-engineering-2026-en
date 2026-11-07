@@ -1,0 +1,250 @@
+{
+  "summary": {
+    "label": "before",
+    "n": 18,
+    "format_rate": 1.0,
+    "content_rate": 0.2777777777777778,
+    "both_rate": 0.2777777777777778,
+    "by_category": {
+      "absent_term": {
+        "n": 6,
+        "format_rate": 1.0,
+        "content_rate": 0.0,
+        "both_rate": 0.0
+      },
+      "known_term": {
+        "n": 6,
+        "format_rate": 1.0,
+        "content_rate": 0.16666666666666666,
+        "both_rate": 0.16666666666666666
+      },
+      "paraphrase": {
+        "n": 6,
+        "format_rate": 1.0,
+        "content_rate": 0.6666666666666666,
+        "both_rate": 0.6666666666666666
+      }
+    },
+    "absent_assertions": 6,
+    "absent_unparseable_review_flags": 0,
+    "seconds": 69.35
+  },
+  "rows": [
+    {
+      "id": "known_term/lora",
+      "category": "known_term",
+      "question": "Give a definition of LoRA.",
+      "raw": "{\n  \"answer\": \"LoRA stands for Low-Rank Adaptation, a technique used in deep learning to fine-tune large pre-trained models with minimal computational overhead. It involves creating a small, trainable parameter matrix that is added to the weights of the model, allowing for rapid and efficient adaptation to new tasks or datasets without requiring the entire model to be retrained from scratch.\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/lora",
+      "category": "paraphrase",
+      "question": "With Low-Rank Adaptation, which weights stay fixed and which parameters are trained?",
+      "raw": "{\n  \"answer\": \"In Low-Rank Adaptation (LoRA), the weights corresponding to the low-rank matrix are fixed, while the parameters corresponding to the trainable matrix are trained.\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "known_term/qlora",
+      "category": "known_term",
+      "question": "Give a definition of QLoRA.",
+      "raw": "{\n  \"answer\": \"QLoRA (Quantum LoRA) is a technique for fine-tuning large language models (LLMs) using a low-rank adaptation layer. It works by applying a small, trainable matrix (LoRA) to the weights of the model, which allows the model to learn new patterns and knowledge without significantly changing its core architecture. This approach is particularly useful for tasks like code generation, reasoning, and creative writing, as it enables the model to adapt to specific domains while maintaining its underlying capabilities.\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/qlora",
+      "category": "paraphrase",
+      "question": "How does Quantized LoRA reduce the memory needed for adaptation?",
+      "raw": "{\n  \"answer\": \"Quantized LoRA reduces the memory needed for adaptation by quantizing the weight matrices of the LoRA adapter. Instead of storing the full high-precision weights, the quantized weights are stored in a smaller, more compact format (e.g., 4-bit or 8-bit), which significantly decreases the amount of memory required to store the adapter during training and inference.\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "known_term/token",
+      "category": "known_term",
+      "question": "Give a definition of Token.",
+      "raw": "{\n  \"answer\": \"A token is a unit of currency or a specific item of value that is issued by a central bank or government to individuals or entities for use in transactions.\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/token",
+      "category": "paraphrase",
+      "question": "What are the small pieces of text used to count an LLM's input length and API charges?",
+      "raw": "{\n  \"answer\": \"The small pieces of text used to count an LLM's input length and API charges are typically called 'token counts' or 'token limits'. These are often provided in the API's request/response headers (e.g., `x-ratelimit-limit` and `x-ratelimit-remaining`) or in the request body as a JSON object containing a `total_tokens` field. The API then uses these values to determine the maximum number of tokens allowed for a single request and to calculate the cost based on the token rate.\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "known_term/learning-rate",
+      "category": "known_term",
+      "question": "Give a definition of Learning rate.",
+      "raw": "{\n  \"answer\": \"The learning rate is a hyperparameter that determines the step size of the gradient descent update rule. It controls how much the model's weights are adjusted during each training iteration. A common learning rate is set to 0.01, which means the model will adjust its parameters by 1% of the current weight value for each step.\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/learning-rate",
+      "category": "paraphrase",
+      "question": "Which training setting controls how far model parameters move in a single update?",
+      "raw": "{\n  \"answer\": \"Learning Rate\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "known_term/epoch",
+      "category": "known_term",
+      "question": "Give a definition of Epoch.",
+      "raw": "{\n  \"answer\": \"An epoch is a period of time in which a specific event or phenomenon occurs, often used in the context of astronomical observations or data analysis to group events together.\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/epoch",
+      "category": "paraphrase",
+      "question": "What do we call one complete pass through every training example?",
+      "raw": "{\n  \"answer\": \"Training set\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "known_term/mcp",
+      "category": "known_term",
+      "question": "Give a definition of MCP (Model Context Protocol).",
+      "raw": "{\n  \"answer\": \"The Model Context Protocol (MCP) is a framework for embedding large language models (LLMs) into applications, allowing users to interact with the model through a structured interface. It enables users to define specific tasks, inputs, and outputs that the model can execute, providing a more controlled and predictable way to use AI for complex tasks.\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/mcp",
+      "category": "paraphrase",
+      "question": "What does the Model Context Protocol standardize between AI applications and external systems?",
+      "raw": "{\n  \"answer\": \"The Model Context Protocol (MCP) standardizes the interaction between AI applications and external systems by defining a structured interface for embedding context into AI models. It provides a standardized way to pass data, instructions, and constraints to AI models, ensuring that the context is consistent and usable across different applications and systems.\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "absent_term/01",
+      "category": "absent_term",
+      "question": "Give a definition of Direct Preference Optimization (DPO).",
+      "raw": "{\n  \"answer\": \"Direct Preference Optimization (DPO) is a reinforcement learning method that uses a reward function to directly maximize the difference between a user's preference and a model's generated output. It is designed to solve the preference matching problem by optimizing the reward function to maximize the difference between the user's preference and the model's output.\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": true
+    },
+    {
+      "id": "absent_term/02",
+      "category": "absent_term",
+      "question": "Give a definition of Rotary Position Embedding (RoPE).",
+      "raw": "{\n  \"answer\": \"A Rotary Position Embedding (RoPE) is a type of positional embedding used in transformer models to generate a position-dependent vector representation for each token. Unlike standard positional embeddings, RoPE applies a rotation to the position vector, effectively creating a new vector for each position. This rotation is determined by the cosine of the position index, which is then scaled by a learnable rotation factor. This allows RoPE to capture long-range dependencies and maintain a consistent representation across different positions, making it particularly useful for tasks like text generation and language modeling.\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": true
+    },
+    {
+      "id": "absent_term/03",
+      "category": "absent_term",
+      "question": "Give a definition of FlashAttention.",
+      "raw": "{\n  \"answer\": \"FlashAttention is a memory-efficient attention mechanism that uses a single memory block to store the query, key, and value vectors, allowing for faster computation and lower memory usage compared to traditional attention mechanisms.\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": true
+    },
+    {
+      "id": "absent_term/04",
+      "category": "absent_term",
+      "question": "Give a definition of Mixture of Experts (MoE).",
+      "raw": "{\n  \"answer\": \"A mixture of experts (MoE) is a neural network architecture that combines multiple expert models to generate a single output. Instead of training a single model to process all input data, the MoE trains a small number of experts to process specific parts of the input data. These experts are then combined to produce the final output. This approach allows the model to be more efficient and scalable, as it can handle large datasets by focusing on the most relevant information from the experts.\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": true
+    },
+    {
+      "id": "absent_term/05",
+      "category": "absent_term",
+      "question": "Give a definition of KV cache.",
+      "raw": "{\n  \"answer\": \"A KV cache is a memory structure used in machine learning to store key-value pairs, typically used for caching the results of a model's forward pass. It allows the model to access the same key-value pairs multiple times without re-computing the entire model, which can significantly improve computational efficiency and reduce training time.\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": true
+    },
+    {
+      "id": "absent_term/06",
+      "category": "absent_term",
+      "question": "Give a definition of Speculative decoding.",
+      "raw": "{\n  \"answer\": \"Speculative decoding is a decoding method that attempts to decode a message using a subset of the available decoding rules, often prioritizing the most likely or probable messages. It is a form of probabilistic decoding where the decoder makes decisions based on the likelihood of different messages rather than strictly adhering to a fixed set of rules.\",\n  \"needs_review\": false\n}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": true
+    }
+  ]
+}

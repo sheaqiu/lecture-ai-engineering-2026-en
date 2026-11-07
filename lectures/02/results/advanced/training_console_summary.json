@@ -1,0 +1,75 @@
+{
+  "source": "User-pasted Colab section 4 training output; exported training.json not yet received",
+  "training": {
+    "seconds": 205.98,
+    "steps": 48,
+    "epochs": 3.0,
+    "train_loss_average": 0.76370669901371,
+    "last_logged_loss": 0.35835057497024536,
+    "last_loss_log_step": 48,
+    "validation_loss": 0.38223132491111755,
+    "train_records": 124,
+    "valid_records": 12
+  },
+  "parameters": {
+    "trainable": 6389760,
+    "total": 758782784,
+    "trainable_percent_reported": 0.8421
+  },
+  "loss_logs": [
+    {
+      "step": 4,
+      "loss": 2.396908
+    },
+    {
+      "step": 8,
+      "loss": 1.499976
+    },
+    {
+      "step": 12,
+      "loss": 0.828742
+    },
+    {
+      "step": 16,
+      "loss": 0.693019
+    },
+    {
+      "step": 20,
+      "loss": 0.619329
+    },
+    {
+      "step": 24,
+      "loss": 0.578158
+    },
+    {
+      "step": 28,
+      "loss": 0.566031
+    },
+    {
+      "step": 32,
+      "loss": 0.47117
+    },
+    {
+      "step": 36,
+      "loss": 0.404569
+    },
+    {
+      "step": 40,
+      "loss": 0.398656
+    },
+    {
+      "step": 44,
+      "loss": 0.349572
+    },
+    {
+      "step": 48,
+      "loss": 0.358351
+    }
+  ],
+  "validation_diagnostics": {
+    "entropy": 0.282174,
+    "num_tokens": 75138.0,
+    "mean_token_accuracy": 0.924743
+  },
+  "next_stage": "Section 5 fixed-test after-training evaluation; then section 6 export"
+}

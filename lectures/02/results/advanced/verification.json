@@ -1,0 +1,48 @@
+{
+  "archive_sha256": "42448660f57742793e009faf7984f41d60fa5404d370f570c90e973368602df2",
+  "all_checks_passed": true,
+  "checks": {
+    "before": {
+      "n": 18,
+      "format_pass": 18,
+      "content_pass": 5
+    },
+    "after": {
+      "n": 18,
+      "format_pass": 18,
+      "content_pass": 7
+    },
+    "retrieval": {
+      "n": 18,
+      "format_pass": 18,
+      "content_pass": 15
+    }
+  },
+  "regressions": [
+    "How does Quantized LoRA reduce the memory needed for adaptation?",
+    "What does the Model Context Protocol standardize between AI applications and external systems?"
+  ],
+  "training": {
+    "seconds": 205.98,
+    "steps": 48,
+    "epochs": 3.0,
+    "train_loss_average": 0.76370669901371,
+    "last_logged_loss": 0.35835057497024536,
+    "last_loss_log_step": 48,
+    "validation_loss": 0.38223132491111755,
+    "train_records": 124,
+    "valid_records": 12
+  },
+  "verified_material_hashes": {
+    "README.md": "6defb544aa7e2e0c674c2400c6ca2238c1d8fbd345d7543b1a44536cc4b9987a",
+    "advanced_glossary.py": "01ec16f695428e5bec9092d740a7f8c1d2121a1a16cd4b81589d5bed69096a5d",
+    "glossary.json": "c3810badb201b5dd44dd9476189297a468567581b1368b82973791a0b709e9d5",
+    "glossary_sft.jsonl": "57e84666ee5e263c51300b2ba8565481f437bc71288acebc76f72e413fa34d3f",
+    "gold.json": "09a7ec647c834c11a559235c94fa9b30e9d22f5f61bc34ecf1dc5930f440dfd2",
+    "manifest.json": "6722f5de4dca308aa95c86d88c8f02522cbdb63ab7790916f812c4409db063c7",
+    "test.jsonl": "d754fc24b139f63bab6b46488792b83aa66d00cc96bfb0d7116d84bc51437ca4",
+    "train.jsonl": "81c58283cbd84a6e322b22caa9565ccecba74849fa6a273f8926f3110d13b5e6",
+    "valid.jsonl": "ba1c209907107db2abc50a141f2172f5ac2eb1e379ead93d0f8dcf82568a0f1f"
+  },
+  "manual_review": "Completed as a separate AI-assisted qualitative comparison; see manual_review_assisted.md. Student execution and AI-assisted judgments are distinguished."
+}

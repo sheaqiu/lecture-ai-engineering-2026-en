@@ -1,0 +1,340 @@
+{
+  "known_term/lora": {
+    "term_id": "lora",
+    "needs_review": false,
+    "reference_answer": "A PEFT method that freezes pretrained weights, represents weight updates as a low-rank product of two small matrices, and trains only those small matrices. It trains few parameters and saves the results (adapters) in small files. The Lecture 02 exercises cover LoRA.",
+    "keyword_groups": [
+      [
+        "freez",
+        "fixed"
+      ],
+      [
+        "low-rank",
+        "low rank"
+      ],
+      [
+        "matri"
+      ]
+    ]
+  },
+  "paraphrase/lora": {
+    "term_id": "lora",
+    "needs_review": false,
+    "reference_answer": "A PEFT method that freezes pretrained weights, represents weight updates as a low-rank product of two small matrices, and trains only those small matrices. It trains few parameters and saves the results (adapters) in small files. The Lecture 02 exercises cover LoRA.",
+    "keyword_groups": [
+      [
+        "freez",
+        "fixed"
+      ],
+      [
+        "low-rank",
+        "low rank"
+      ],
+      [
+        "matri"
+      ]
+    ]
+  },
+  "known_term/qlora": {
+    "term_id": "qlora",
+    "needs_review": false,
+    "reference_answer": "A method that saves memory by quantizing base-model weights to, for example, 4 bits, then trains with LoRA. This lets smaller GPUs handle larger models. In the Lecture 02 exercises, the model fits in GPU memory, so we train with LoRA and compare memory and output differences when loading in 4-bit in the advanced section.",
+    "keyword_groups": [
+      [
+        "quantiz"
+      ],
+      [
+        "4-bit",
+        "4 bits",
+        "four bit"
+      ],
+      [
+        "LoRA"
+      ]
+    ]
+  },
+  "paraphrase/qlora": {
+    "term_id": "qlora",
+    "needs_review": false,
+    "reference_answer": "A method that saves memory by quantizing base-model weights to, for example, 4 bits, then trains with LoRA. This lets smaller GPUs handle larger models. In the Lecture 02 exercises, the model fits in GPU memory, so we train with LoRA and compare memory and output differences when loading in 4-bit in the advanced section.",
+    "keyword_groups": [
+      [
+        "quantiz"
+      ],
+      [
+        "4-bit",
+        "4 bits",
+        "four bit"
+      ],
+      [
+        "LoRA"
+      ]
+    ]
+  },
+  "known_term/token": {
+    "term_id": "token",
+    "needs_review": false,
+    "reference_answer": "The smallest unit an LLM uses to process text. Text is split into fragments of words or characters. API charges, rate limits, and context window sizes are often counted in tokens. Tokenization varies by language; for example, Japanese tends to require more tokens per character than English.",
+    "keyword_groups": [
+      [
+        "text",
+        "word",
+        "character"
+      ],
+      [
+        "unit",
+        "piece",
+        "fragment",
+        "segment",
+        "subword"
+      ]
+    ]
+  },
+  "paraphrase/token": {
+    "term_id": "token",
+    "needs_review": false,
+    "reference_answer": "The smallest unit an LLM uses to process text. Text is split into fragments of words or characters. API charges, rate limits, and context window sizes are often counted in tokens. Tokenization varies by language; for example, Japanese tends to require more tokens per character than English.",
+    "keyword_groups": [
+      [
+        "text",
+        "word",
+        "character"
+      ],
+      [
+        "unit",
+        "piece",
+        "fragment",
+        "segment",
+        "subword"
+      ]
+    ]
+  },
+  "known_term/learning-rate": {
+    "term_id": "learning-rate",
+    "needs_review": false,
+    "reference_answer": "A hyperparameter that determines how far parameters move in one update. Too large a value makes training unstable; too small a value slows progress.",
+    "keyword_groups": [
+      [
+        "parameter",
+        "weight"
+      ],
+      [
+        "update",
+        "step",
+        "move"
+      ],
+      [
+        "size",
+        "far",
+        "magnitude",
+        "scale",
+        "amount"
+      ]
+    ]
+  },
+  "paraphrase/learning-rate": {
+    "term_id": "learning-rate",
+    "needs_review": false,
+    "reference_answer": "A hyperparameter that determines how far parameters move in one update. Too large a value makes training unstable; too small a value slows progress.",
+    "keyword_groups": [
+      [
+        "parameter",
+        "weight"
+      ],
+      [
+        "update",
+        "step",
+        "move"
+      ],
+      [
+        "size",
+        "far",
+        "magnitude",
+        "scale",
+        "amount"
+      ]
+    ]
+  },
+  "known_term/epoch": {
+    "term_id": "epoch",
+    "needs_review": false,
+    "reference_answer": "One pass through the entire training dataset is one epoch. Too many epochs can cause overfitting.",
+    "keyword_groups": [
+      [
+        "pass"
+      ],
+      [
+        "training",
+        "dataset",
+        "data"
+      ],
+      [
+        "one",
+        "once",
+        "entire",
+        "full"
+      ]
+    ]
+  },
+  "paraphrase/epoch": {
+    "term_id": "epoch",
+    "needs_review": false,
+    "reference_answer": "One pass through the entire training dataset is one epoch. Too many epochs can cause overfitting.",
+    "keyword_groups": [
+      [
+        "pass"
+      ],
+      [
+        "training",
+        "dataset",
+        "data"
+      ],
+      [
+        "one",
+        "once",
+        "entire",
+        "full"
+      ]
+    ]
+  },
+  "known_term/mcp": {
+    "term_id": "mcp",
+    "needs_review": false,
+    "reference_answer": "An open standard protocol connecting AI applications to external tools and data sources. Tools exposed through an MCP server can be used in a common way from compatible agents and editors (MCP clients). In Lecture 05, you will experience this by turning glossary search into an MCP server.",
+    "keyword_groups": [
+      [
+        "protocol"
+      ],
+      [
+        "tool",
+        "data"
+      ],
+      [
+        "connect",
+        "communicat",
+        "standard"
+      ]
+    ]
+  },
+  "paraphrase/mcp": {
+    "term_id": "mcp",
+    "needs_review": false,
+    "reference_answer": "An open standard protocol connecting AI applications to external tools and data sources. Tools exposed through an MCP server can be used in a common way from compatible agents and editors (MCP clients). In Lecture 05, you will experience this by turning glossary search into an MCP server.",
+    "keyword_groups": [
+      [
+        "protocol"
+      ],
+      [
+        "tool",
+        "data"
+      ],
+      [
+        "connect",
+        "communicat",
+        "standard"
+      ]
+    ]
+  },
+  "absent_term/01": {
+    "term_id": null,
+    "needs_review": true,
+    "reference_answer": "This term is not covered by the course glossary. Confirmation is needed.",
+    "keyword_groups": [
+      [
+        "glossary"
+      ],
+      [
+        "not covered",
+        "not in",
+        "absent",
+        "unlisted",
+        "outside"
+      ]
+    ]
+  },
+  "absent_term/02": {
+    "term_id": null,
+    "needs_review": true,
+    "reference_answer": "This term is not covered by the course glossary. Confirmation is needed.",
+    "keyword_groups": [
+      [
+        "glossary"
+      ],
+      [
+        "not covered",
+        "not in",
+        "absent",
+        "unlisted",
+        "outside"
+      ]
+    ]
+  },
+  "absent_term/03": {
+    "term_id": null,
+    "needs_review": true,
+    "reference_answer": "This term is not covered by the course glossary. Confirmation is needed.",
+    "keyword_groups": [
+      [
+        "glossary"
+      ],
+      [
+        "not covered",
+        "not in",
+        "absent",
+        "unlisted",
+        "outside"
+      ]
+    ]
+  },
+  "absent_term/04": {
+    "term_id": null,
+    "needs_review": true,
+    "reference_answer": "This term is not covered by the course glossary. Confirmation is needed.",
+    "keyword_groups": [
+      [
+        "glossary"
+      ],
+      [
+        "not covered",
+        "not in",
+        "absent",
+        "unlisted",
+        "outside"
+      ]
+    ]
+  },
+  "absent_term/05": {
+    "term_id": null,
+    "needs_review": true,
+    "reference_answer": "This term is not covered by the course glossary. Confirmation is needed.",
+    "keyword_groups": [
+      [
+        "glossary"
+      ],
+      [
+        "not covered",
+        "not in",
+        "absent",
+        "unlisted",
+        "outside"
+      ]
+    ]
+  },
+  "absent_term/06": {
+    "term_id": null,
+    "needs_review": true,
+    "reference_answer": "This term is not covered by the course glossary. Confirmation is needed.",
+    "keyword_groups": [
+      [
+        "glossary"
+      ],
+      [
+        "not covered",
+        "not in",
+        "absent",
+        "unlisted",
+        "outside"
+      ]
+    ]
+  }
+}

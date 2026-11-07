@@ -1,0 +1,27 @@
+{
+  "source": "User-provided original FAQ experiment files; re-supplied on 2026-11-07",
+  "scope": "File contents and course scoring checked; live Colab execution order not inspected",
+  "all_checks_passed": true,
+  "scores": {
+    "before": {
+      "n": 21,
+      "format_pass": 20,
+      "content_pass": 8,
+      "grounded_content_pass": 7,
+      "ungrounded_content_pass": 1
+    },
+    "after": {
+      "n": 21,
+      "format_pass": 21,
+      "content_pass": 20,
+      "grounded_content_pass": 15,
+      "ungrounded_content_pass": 5
+    }
+  },
+  "regressed": [],
+  "sha256": {
+    "result.json": "d5bc23c9e18cdc7dbce196e9d09a6132dd2011eacc760eec176bcfae418f50aa",
+    "eval_before.json": "de1bed0b4236b4b1a49967292aaa4450f0785765796af3dac8f1fc431fef274b",
+    "eval_after.json": "88a8e82b49d5070afa32c5c2bf1d290ab48f72c333316df4e5a4597970829eee"
+  }
+}

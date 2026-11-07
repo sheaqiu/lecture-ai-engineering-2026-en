@@ -1,0 +1,38 @@
+{
+  "status": "materials_prepared_not_gpu_trained",
+  "source_repository": "sheaqiu/lecture-ai-engineering-2026-en",
+  "course_source_commit": "2a89014410768f2307a72d0727d1c6bdb29cd726",
+  "course_glossary_note": "Draft glossary for Lecture 01–03 and Lecture 05 of AIE2026. Replace content once the lecture slides are finalized.",
+  "raw_generation": "python scripts/make_sft_dataset.py > glossary_sft.jsonl",
+  "raw_source_script_sha256": "1a3b81f111977b495fd78f0d69d9c029490c708a03b6a5c7175d44aa33602304",
+  "glossary_terms": 58,
+  "raw_examples": 116,
+  "train_examples": 124,
+  "valid_examples": 12,
+  "test_examples": 18,
+  "transformations": [
+    "Preserve all 116 course-script question/definition pairs.",
+    "Wrap each assistant definition in JSON with needs_review=false; prepend the same system instruction used in evaluation.",
+    "Add 8 negative training examples about unlisted terms; use disjoint negative terms in validation and test.",
+    "Use 12 distinct validation questions and 18 fixed test questions: 6 named terms, 6 paraphrases, 6 unlisted terms."
+  ],
+  "split_policy": "Known concepts are shared across splits; exact and normalized questions are disjoint. This tests wording generalization and coverage handling, not unseen-concept learning.",
+  "answering_mode": "Closed book. The neural model receives only the shared system instruction and the question, without glossary definitions or gold labels.",
+  "coverage_policy": "An unlisted term must request review even if its real-world definition is known. This measures compliance with glossary coverage, not global factual ignorance.",
+  "retrieval_baseline": "Longest whole normalized term/alias match; return the stored definition, or abstain. It is a simple lexical baseline, not semantic retrieval or a full RAG system.",
+  "metric_policy": "Strict JSON format score; content score checks review flag and case-insensitive keyword groups. Keyword scores require manual semantic review.",
+  "settings_changed_from_original_faq": {
+    "num_train_epochs": 3,
+    "max_new_tokens": 192
+  },
+  "training_policy": "Fixed three-epoch first experiment; validate once after training, without selecting a checkpoint or tuning against test results.",
+  "files_sha256": {
+    "advanced_glossary.py": "01ec16f695428e5bec9092d740a7f8c1d2121a1a16cd4b81589d5bed69096a5d",
+    "glossary.json": "c3810badb201b5dd44dd9476189297a468567581b1368b82973791a0b709e9d5",
+    "glossary_sft.jsonl": "57e84666ee5e263c51300b2ba8565481f437bc71288acebc76f72e413fa34d3f",
+    "gold.json": "09a7ec647c834c11a559235c94fa9b30e9d22f5f61bc34ecf1dc5930f440dfd2",
+    "test.jsonl": "d754fc24b139f63bab6b46488792b83aa66d00cc96bfb0d7116d84bc51437ca4",
+    "train.jsonl": "81c58283cbd84a6e322b22caa9565ccecba74849fa6a273f8926f3110d13b5e6",
+    "valid.jsonl": "ba1c209907107db2abc50a141f2172f5ac2eb1e379ead93d0f8dcf82568a0f1f"
+  }
+}

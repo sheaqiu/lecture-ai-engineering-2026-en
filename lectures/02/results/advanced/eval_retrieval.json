@@ -1,0 +1,250 @@
+{
+  "summary": {
+    "label": "retrieval",
+    "n": 18,
+    "format_rate": 1.0,
+    "content_rate": 0.8333333333333334,
+    "both_rate": 0.8333333333333334,
+    "by_category": {
+      "absent_term": {
+        "n": 6,
+        "format_rate": 1.0,
+        "content_rate": 1.0,
+        "both_rate": 1.0
+      },
+      "known_term": {
+        "n": 6,
+        "format_rate": 1.0,
+        "content_rate": 1.0,
+        "both_rate": 1.0
+      },
+      "paraphrase": {
+        "n": 6,
+        "format_rate": 1.0,
+        "content_rate": 0.5,
+        "both_rate": 0.5
+      }
+    },
+    "absent_assertions": 0,
+    "absent_unparseable_review_flags": 0,
+    "seconds": 0.06
+  },
+  "rows": [
+    {
+      "id": "known_term/lora",
+      "category": "known_term",
+      "question": "Give a definition of LoRA.",
+      "raw": "{\"answer\": \"A PEFT method that freezes pretrained weights, represents weight updates as a low-rank product of two small matrices, and trains only those small matrices. It trains few parameters and saves the results (adapters) in small files. The Lecture 02 exercises cover LoRA.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/lora",
+      "category": "paraphrase",
+      "question": "With Low-Rank Adaptation, which weights stay fixed and which parameters are trained?",
+      "raw": "{\"answer\": \"A PEFT method that freezes pretrained weights, represents weight updates as a low-rank product of two small matrices, and trains only those small matrices. It trains few parameters and saves the results (adapters) in small files. The Lecture 02 exercises cover LoRA.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "known_term/qlora",
+      "category": "known_term",
+      "question": "Give a definition of QLoRA.",
+      "raw": "{\"answer\": \"A method that saves memory by quantizing base-model weights to, for example, 4 bits, then trains with LoRA. This lets smaller GPUs handle larger models. In the Lecture 02 exercises, the model fits in GPU memory, so we train with LoRA and compare memory and output differences when loading in 4-bit in the advanced section.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/qlora",
+      "category": "paraphrase",
+      "question": "How does Quantized LoRA reduce the memory needed for adaptation?",
+      "raw": "{\"answer\": \"A method that saves memory by quantizing base-model weights to, for example, 4 bits, then trains with LoRA. This lets smaller GPUs handle larger models. In the Lecture 02 exercises, the model fits in GPU memory, so we train with LoRA and compare memory and output differences when loading in 4-bit in the advanced section.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "known_term/token",
+      "category": "known_term",
+      "question": "Give a definition of Token.",
+      "raw": "{\"answer\": \"The smallest unit an LLM uses to process text. Text is split into fragments of words or characters. API charges, rate limits, and context window sizes are often counted in tokens. Tokenization varies by language; for example, Japanese tends to require more tokens per character than English.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/token",
+      "category": "paraphrase",
+      "question": "What are the small pieces of text used to count an LLM's input length and API charges?",
+      "raw": "{\"answer\": \"An interface through which a program calls the functionality of another service. In this course, we use an LLM by calling the Gemini API from Python.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "known_term/learning-rate",
+      "category": "known_term",
+      "question": "Give a definition of Learning rate.",
+      "raw": "{\"answer\": \"A hyperparameter that determines how far parameters move in one update. Too large a value makes training unstable; too small a value slows progress.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/learning-rate",
+      "category": "paraphrase",
+      "question": "Which training setting controls how far model parameters move in a single update?",
+      "raw": "{\"answer\": \"This term is not covered by the course glossary. Confirmation is needed.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": true,
+      "gold_needs_review": false
+    },
+    {
+      "id": "known_term/epoch",
+      "category": "known_term",
+      "question": "Give a definition of Epoch.",
+      "raw": "{\"answer\": \"One pass through the entire training dataset is one epoch. Too many epochs can cause overfitting.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/epoch",
+      "category": "paraphrase",
+      "question": "What do we call one complete pass through every training example?",
+      "raw": "{\"answer\": \"This term is not covered by the course glossary. Confirmation is needed.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": true,
+      "gold_needs_review": false
+    },
+    {
+      "id": "known_term/mcp",
+      "category": "known_term",
+      "question": "Give a definition of MCP (Model Context Protocol).",
+      "raw": "{\"answer\": \"An open standard protocol connecting AI applications to external tools and data sources. Tools exposed through an MCP server can be used in a common way from compatible agents and editors (MCP clients). In Lecture 05, you will experience this by turning glossary search into an MCP server.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/mcp",
+      "category": "paraphrase",
+      "question": "What does the Model Context Protocol standardize between AI applications and external systems?",
+      "raw": "{\"answer\": \"An open standard protocol connecting AI applications to external tools and data sources. Tools exposed through an MCP server can be used in a common way from compatible agents and editors (MCP clients). In Lecture 05, you will experience this by turning glossary search into an MCP server.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "absent_term/01",
+      "category": "absent_term",
+      "question": "Give a definition of Direct Preference Optimization (DPO).",
+      "raw": "{\"answer\": \"This term is not covered by the course glossary. Confirmation is needed.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": true,
+      "gold_needs_review": true
+    },
+    {
+      "id": "absent_term/02",
+      "category": "absent_term",
+      "question": "Give a definition of Rotary Position Embedding (RoPE).",
+      "raw": "{\"answer\": \"This term is not covered by the course glossary. Confirmation is needed.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": true,
+      "gold_needs_review": true
+    },
+    {
+      "id": "absent_term/03",
+      "category": "absent_term",
+      "question": "Give a definition of FlashAttention.",
+      "raw": "{\"answer\": \"This term is not covered by the course glossary. Confirmation is needed.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": true,
+      "gold_needs_review": true
+    },
+    {
+      "id": "absent_term/04",
+      "category": "absent_term",
+      "question": "Give a definition of Mixture of Experts (MoE).",
+      "raw": "{\"answer\": \"This term is not covered by the course glossary. Confirmation is needed.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": true,
+      "gold_needs_review": true
+    },
+    {
+      "id": "absent_term/05",
+      "category": "absent_term",
+      "question": "Give a definition of KV cache.",
+      "raw": "{\"answer\": \"This term is not covered by the course glossary. Confirmation is needed.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": true,
+      "gold_needs_review": true
+    },
+    {
+      "id": "absent_term/06",
+      "category": "absent_term",
+      "question": "Give a definition of Speculative decoding.",
+      "raw": "{\"answer\": \"This term is not covered by the course glossary. Confirmation is needed.\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": true,
+      "gold_needs_review": true
+    }
+  ]
+}
