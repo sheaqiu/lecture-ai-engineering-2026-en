@@ -1,0 +1,11 @@
+{
+  "seconds": 205.98,
+  "steps": 48,
+  "epochs": 3.0,
+  "train_loss_average": 0.76370669901371,
+  "last_logged_loss": 0.35835057497024536,
+  "last_loss_log_step": 48,
+  "validation_loss": 0.38223132491111755,
+  "train_records": 124,
+  "valid_records": 12
+}

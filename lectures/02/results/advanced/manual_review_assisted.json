@@ -1,0 +1,157 @@
+{
+  "reviewer": "Codex, AI-assisted semantic comparison with the supplied glossary and task policy",
+  "student_verification": "Student executed the experiments and exported files. The semantic judgments in this file are AI-assisted, not claimed as independent student judgments.",
+  "rubric": {
+    "correct": "Answers the question consistently with the supplied reference and without material unsupported additions.",
+    "partial": "Contains a correct core idea but also omissions or unsupported/misleading additions.",
+    "incorrect": "Contains a substantive error, wrong referent, or fails to answer the question.",
+    "coverage_violation": "Asserts an answer with needs_review=false for a term absent from the course glossary."
+  },
+  "note": "Qualitative review; no additional manual accuracy percentage is claimed. Original keyword scores remain unchanged.",
+  "rows": [
+    {
+      "id": "known_term/lora",
+      "question": "Give a definition of LoRA.",
+      "before_semantic_review": "partial",
+      "after_semantic_review": "incorrect",
+      "lookup_semantic_review": "correct",
+      "reason": "Before: incomplete mechanism. After: invents saving the best weights and unrelated course/model names; does not explain frozen base weights and learned low-rank updates."
+    },
+    {
+      "id": "paraphrase/lora",
+      "question": "With Low-Rank Adaptation, which weights stay fixed and which parameters are trained?",
+      "before_semantic_review": "incorrect",
+      "after_semantic_review": "incorrect",
+      "lookup_semantic_review": "correct",
+      "reason": "Both neural answers reverse what is frozen. Both nevertheless pass the keyword rule. LoRA freezes pretrained base weights and trains the added low-rank matrices."
+    },
+    {
+      "id": "known_term/qlora",
+      "question": "Give a definition of QLoRA.",
+      "before_semantic_review": "incorrect",
+      "after_semantic_review": "incorrect",
+      "lookup_semantic_review": "correct",
+      "reason": "Before: expands QLoRA as Quantum LoRA. After: describes selecting useful parameters and reducing learning rate rather than quantizing the base model."
+    },
+    {
+      "id": "paraphrase/qlora",
+      "question": "How does Quantized LoRA reduce the memory needed for adaptation?",
+      "before_semantic_review": "incorrect",
+      "after_semantic_review": "incorrect",
+      "lookup_semantic_review": "correct",
+      "reason": "Before incorrectly quantizes adapter weights; after confuses 4/8-bit precision with the number of trainable parameters. The automatic regression is not a transition from a semantically correct answer."
+    },
+    {
+      "id": "known_term/token",
+      "question": "Give a definition of Token.",
+      "before_semantic_review": "incorrect",
+      "after_semantic_review": "partial",
+      "lookup_semantic_review": "correct",
+      "reason": "Before uses a financial meaning. After correctly starts with a unit of text but adds unsupported Pydantic AI behavior and a configuration name."
+    },
+    {
+      "id": "paraphrase/token",
+      "question": "What are the small pieces of text used to count an LLM's input length and API charges?",
+      "before_semantic_review": "incorrect",
+      "after_semantic_review": "incorrect",
+      "lookup_semantic_review": "incorrect",
+      "reason": "Before calls the pieces token counts or token limits and adds unrelated API details. After repeats the question and invents payload details without clearly naming tokens. Lookup chooses API instead of Token."
+    },
+    {
+      "id": "known_term/learning-rate",
+      "question": "Give a definition of Learning rate.",
+      "before_semantic_review": "partial",
+      "after_semantic_review": "partial",
+      "lookup_semantic_review": "correct",
+      "reason": "Both identify parameter update size. Before incorrectly equates lr=0.01 with a fixed 1% weight change; after replaces the glossary warning about instability with an unsupported overfitting claim."
+    },
+    {
+      "id": "paraphrase/learning-rate",
+      "question": "Which training setting controls how far model parameters move in a single update?",
+      "before_semantic_review": "correct",
+      "after_semantic_review": "partial",
+      "lookup_semantic_review": "incorrect",
+      "reason": "Before correctly names Learning Rate, which answers the question, but fails a definition-based keyword rule. After adds a definition and an unsupported overfitting claim. Lookup misses the implicit term and wrongly abstains."
+    },
+    {
+      "id": "known_term/epoch",
+      "question": "Give a definition of Epoch.",
+      "before_semantic_review": "incorrect",
+      "after_semantic_review": "correct",
+      "lookup_semantic_review": "correct",
+      "reason": "Before uses a generic time-period/astronomy meaning. After correctly describes a full pass over the training dataset and the risk of too many epochs."
+    },
+    {
+      "id": "paraphrase/epoch",
+      "question": "What do we call one complete pass through every training example?",
+      "before_semantic_review": "incorrect",
+      "after_semantic_review": "partial",
+      "lookup_semantic_review": "incorrect",
+      "reason": "Before answers Training set. After identifies epoch but adds unsupported Pydantic AI version-specific naming. Lookup misses the implicit term and wrongly abstains."
+    },
+    {
+      "id": "known_term/mcp",
+      "question": "Give a definition of MCP (Model Context Protocol).",
+      "before_semantic_review": "incorrect",
+      "after_semantic_review": "partial",
+      "lookup_semantic_review": "correct",
+      "reason": "Before describes embedding LLMs rather than the protocol connecting tools/data. After starts closer to the glossary but ends with repetitive unsupported LLM-to-LLM wording."
+    },
+    {
+      "id": "paraphrase/mcp",
+      "question": "What does the Model Context Protocol standardize between AI applications and external systems?",
+      "before_semantic_review": "partial",
+      "after_semantic_review": "incorrect",
+      "lookup_semantic_review": "correct",
+      "reason": "Before is vague about context exchange; after incorrectly suggests deterministic matching inputs/outputs across tools. Neither should be treated as fully correct solely because of a keyword score."
+    },
+    {
+      "id": "absent_term/01",
+      "question": "Give a definition of Direct Preference Optimization (DPO).",
+      "before_semantic_review": "coverage_violation",
+      "after_semantic_review": "coverage_violation",
+      "lookup_semantic_review": "correct",
+      "reason": "The term is absent from this course glossary. Both neural answers set needs_review=false; the task requires true regardless of any real-world definition. Lookup correctly abstains."
+    },
+    {
+      "id": "absent_term/02",
+      "question": "Give a definition of Rotary Position Embedding (RoPE).",
+      "before_semantic_review": "coverage_violation",
+      "after_semantic_review": "coverage_violation",
+      "lookup_semantic_review": "correct",
+      "reason": "The term is absent from this course glossary. Both neural answers set needs_review=false; the task requires true regardless of any real-world definition. Lookup correctly abstains."
+    },
+    {
+      "id": "absent_term/03",
+      "question": "Give a definition of FlashAttention.",
+      "before_semantic_review": "coverage_violation",
+      "after_semantic_review": "coverage_violation",
+      "lookup_semantic_review": "correct",
+      "reason": "The term is absent from this course glossary. Both neural answers set needs_review=false; the task requires true regardless of any real-world definition. Lookup correctly abstains."
+    },
+    {
+      "id": "absent_term/04",
+      "question": "Give a definition of Mixture of Experts (MoE).",
+      "before_semantic_review": "coverage_violation",
+      "after_semantic_review": "coverage_violation",
+      "lookup_semantic_review": "correct",
+      "reason": "The term is absent from this course glossary. Both neural answers set needs_review=false; the task requires true regardless of any real-world definition. Lookup correctly abstains."
+    },
+    {
+      "id": "absent_term/05",
+      "question": "Give a definition of KV cache.",
+      "before_semantic_review": "coverage_violation",
+      "after_semantic_review": "coverage_violation",
+      "lookup_semantic_review": "correct",
+      "reason": "The term is absent from this course glossary. Both neural answers set needs_review=false; the task requires true regardless of any real-world definition. Lookup correctly abstains."
+    },
+    {
+      "id": "absent_term/06",
+      "question": "Give a definition of Speculative decoding.",
+      "before_semantic_review": "coverage_violation",
+      "after_semantic_review": "coverage_violation",
+      "lookup_semantic_review": "correct",
+      "reason": "The term is absent from this course glossary. Both neural answers set needs_review=false; the task requires true regardless of any real-world definition. Lookup correctly abstains."
+    }
+  ]
+}

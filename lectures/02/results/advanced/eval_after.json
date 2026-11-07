@@ -1,0 +1,250 @@
+{
+  "summary": {
+    "label": "after",
+    "n": 18,
+    "format_rate": 1.0,
+    "content_rate": 0.3888888888888889,
+    "both_rate": 0.3888888888888889,
+    "by_category": {
+      "absent_term": {
+        "n": 6,
+        "format_rate": 1.0,
+        "content_rate": 0.0,
+        "both_rate": 0.0
+      },
+      "known_term": {
+        "n": 6,
+        "format_rate": 1.0,
+        "content_rate": 0.5,
+        "both_rate": 0.5
+      },
+      "paraphrase": {
+        "n": 6,
+        "format_rate": 1.0,
+        "content_rate": 0.6666666666666666,
+        "both_rate": 0.6666666666666666
+      }
+    },
+    "absent_assertions": 6,
+    "absent_unparseable_review_flags": 0,
+    "seconds": 69.41
+  },
+  "rows": [
+    {
+      "id": "known_term/lora",
+      "category": "known_term",
+      "question": "Give a definition of LoRA.",
+      "raw": "{\"answer\": \"A method for reducing the number of parameters needed to train LLMs by storing only the best weights from a few training iterations. It is used with LMAIE2026's Lora and LoRA models. It is more memory-efficient and faster to train than standard parameter-free adapters.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/lora",
+      "category": "paraphrase",
+      "question": "With Low-Rank Adaptation, which weights stay fixed and which parameters are trained?",
+      "raw": "{\"answer\": \"The low-rank matrices (weights) are fixed. The trainable parameters (weights in the same dimensions) are trained by solving a small system of equations. This reduces the number of parameters to train and saves computation.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "known_term/qlora",
+      "category": "known_term",
+      "question": "Give a definition of QLoRA.",
+      "raw": "{\"answer\": \"A method for loading and using LoRA adapters more efficiently. It loads only the most useful parameters and trains them with a smaller learning rate. This reduces memory and GPU usage, which is especially important for large models. It is the standard approach for training LoRA adapters in this course.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/qlora",
+      "category": "paraphrase",
+      "question": "How does Quantized LoRA reduce the memory needed for adaptation?",
+      "raw": "{\"answer\": \"Reducing the number of trainable parameters from LRAIA's 7B to a small number such as 4 or 8. This cuts the total number of parameters to be trained and the amount of GPU memory needed for one pass through the Lora adapter.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "known_term/token",
+      "category": "known_term",
+      "question": "Give a definition of Token.",
+      "raw": "{\"answer\": \"A unit of text used for generating text in LLMs. In Pydantic AI, it is represented by an integer and is used to determine how many tokens a model can handle. Too many tokens cause output truncation; too few cause errors. The model's maximum output length is set by the model_max_input_length configuration.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/token",
+      "category": "paraphrase",
+      "question": "What are the small pieces of text used to count an LLM's input length and API charges?",
+      "raw": "{\"answer\": \"The small pieces of text used to count an LLM's input length and API charges. They are added to the request payload as \\\"input\\\" and \\\"output\\\" fields. For free tiers, there is a rate limit on requests per second, so you should count them carefully.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "known_term/learning-rate",
+      "category": "known_term",
+      "question": "Give a definition of Learning rate.",
+      "raw": "{\"answer\": \"A hyperparameter that determines how far parameters move in one update. Too large a value leads to overfitting; too small a value slows convergence.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/learning-rate",
+      "category": "paraphrase",
+      "question": "Which training setting controls how far model parameters move in a single update?",
+      "raw": "{\"answer\": \"Learning rate (lr). A value that determines how far parameters move in one update. Too large a value can cause overfitting; too small a value slows training.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "known_term/epoch",
+      "category": "known_term",
+      "question": "Give a definition of Epoch.",
+      "raw": "{\"answer\": \"One pass through the entire dataset used for updating model weights. Too many epochs can lead to overfitting.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/epoch",
+      "category": "paraphrase",
+      "question": "What do we call one complete pass through every training example?",
+      "raw": "{\"answer\": \"A pass through all examples used for training. In Pydantic AI, this is called one epoch. In Pydantic AI 2.0, it is called one pass.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "known_term/mcp",
+      "category": "known_term",
+      "question": "Give a definition of MCP (Model Context Protocol).",
+      "raw": "{\"answer\": \"An open standard for connecting applications to tools and data through MCP clients. It allows agents to call tools and read/write data across different applications and devices. The course uses MCP to connect the LLM to the LLM, the LLM to the LLM, and the LLM to the LLM.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "paraphrase/mcp",
+      "category": "paraphrase",
+      "question": "What does the Model Context Protocol standardize between AI applications and external systems?",
+      "raw": "{\"answer\": \"A standard for describing the input data an LLM receives and the output it produces. It defines the same input for the same question, regardless of the tool used, and the same output for the same answer, regardless of the data source. This makes it easier to compare and compare results across different tools and data sources.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": false
+    },
+    {
+      "id": "absent_term/01",
+      "category": "absent_term",
+      "question": "Give a definition of Direct Preference Optimization (DPO).",
+      "raw": "{\"answer\": \"A method that trains an agent to choose an output (such as a label or action) more often when it matches a human's preference and less often when it does not. It is used to align an agent with human goals.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": true
+    },
+    {
+      "id": "absent_term/02",
+      "category": "absent_term",
+      "question": "Give a definition of Rotary Position Embedding (RoPE).",
+      "raw": "{\"answer\": \"A method for representing position information in embeddings. It uses a query-key-value pattern with a learnable scale and rotation factor. It is more general and stable than positional embeddings and is used in Pydantic AI's LLM models.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": true
+    },
+    {
+      "id": "absent_term/03",
+      "category": "absent_term",
+      "question": "Give a definition of FlashAttention.",
+      "raw": "{\"answer\": \"A mechanism for computing attention scores more quickly by passing the same input twice and multiplying the results. It is more memory- and time-efficient than multiplying the same input twice for each query and key pair. It is also more accurate than multiplying the same input twice for each query and key pair, because it uses the same values for both inputs.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": true
+    },
+    {
+      "id": "absent_term/04",
+      "category": "absent_term",
+      "question": "Give a definition of Mixture of Experts (MoE).",
+      "raw": "{\"answer\": \"A model that combines multiple small models (Experts) in a few connection types (additive, parallel, or split-and-weight). This reduces parameter count and training time while improving performance.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": true
+    },
+    {
+      "id": "absent_term/05",
+      "category": "absent_term",
+      "question": "Give a definition of KV cache.",
+      "raw": "{\"answer\": \"A mechanism for storing intermediate results (such as embeddings) between multiple passes through a model. In Pydantic AI, it is implemented using the Pydantic AI KV cache. It is disabled by default and can be enabled with the Pydantic AI enable_kv_cache setting.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": true
+    },
+    {
+      "id": "absent_term/06",
+      "category": "absent_term",
+      "question": "Give a definition of Speculative decoding.",
+      "raw": "{\"answer\": \"A mechanism in Pydantic AI that attempts to answer questions by trying multiple possible interpretations of the input, one at a time, before returning the most likely one. This can be useful for questions with ambiguous language or conflicting information, such as \\\"What is Python?\\\" or \\\"What is 2 + 2?\\\". It is not a replacement for Claude's internal reasoning; it is a tool-level approach.\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "predicted_needs_review": false,
+      "gold_needs_review": true
+    }
+  ]
+}
