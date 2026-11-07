@@ -1,35 +1,35 @@
-# AI-assisted per-question review
+# 回答内容の確認記録（Codex補助）
 
-Student executed the experiments and exported files. The semantic judgments in this file are AI-assisted, not claimed as independent student judgments.
+私は実験を実行し、結果を保存・出力しました。この表の内容照合と整理にはCodexの補助を利用しました。
 
-These judgments compare the complete answer with the course glossary and the stated coverage policy. They are separate from the fixed keyword scorer. Partial means a useful core idea is mixed with unsupported or misleading content. No manual accuracy percentage is reported.
+回答全体を講義の用語集と対象範囲の規則に照らして確認し、固定したキーワード採点とは別に記録しています。「一部一致」は中心部分が正しくても、不足や根拠のない説明が含まれる場合です。追加の手動正解率は算出していません。
 
-| Question ID | Before | After | Lookup | Review note |
+| 問題ID | 学習前 | 学習後 | 検索 | 確認内容 |
 |---|---|---|---|---|
-| known_term/lora | partial | incorrect | correct | Before: incomplete mechanism. After: invents saving the best weights and unrelated course/model names; does not explain frozen base weights and learned low-rank updates. |
-| paraphrase/lora | incorrect | incorrect | correct | Both neural answers reverse what is frozen. Both nevertheless pass the keyword rule. LoRA freezes pretrained base weights and trains the added low-rank matrices. |
-| known_term/qlora | incorrect | incorrect | correct | Before: expands QLoRA as Quantum LoRA. After: describes selecting useful parameters and reducing learning rate rather than quantizing the base model. |
-| paraphrase/qlora | incorrect | incorrect | correct | Before incorrectly quantizes adapter weights; after confuses 4/8-bit precision with the number of trainable parameters. The automatic regression is not a transition from a semantically correct answer. |
-| known_term/token | incorrect | partial | correct | Before uses a financial meaning. After correctly starts with a unit of text but adds unsupported Pydantic AI behavior and a configuration name. |
-| paraphrase/token | incorrect | incorrect | incorrect | Before calls the pieces token counts or token limits and adds unrelated API details. After repeats the question and invents payload details without clearly naming tokens. Lookup chooses API instead of Token. |
-| known_term/learning-rate | partial | partial | correct | Both identify parameter update size. Before incorrectly equates lr=0.01 with a fixed 1% weight change; after replaces the glossary warning about instability with an unsupported overfitting claim. |
-| paraphrase/learning-rate | correct | partial | incorrect | Before correctly names Learning Rate, which answers the question, but fails a definition-based keyword rule. After adds a definition and an unsupported overfitting claim. Lookup misses the implicit term and wrongly abstains. |
-| known_term/epoch | incorrect | correct | correct | Before uses a generic time-period/astronomy meaning. After correctly describes a full pass over the training dataset and the risk of too many epochs. |
-| paraphrase/epoch | incorrect | partial | incorrect | Before answers Training set. After identifies epoch but adds unsupported Pydantic AI version-specific naming. Lookup misses the implicit term and wrongly abstains. |
-| known_term/mcp | incorrect | partial | correct | Before describes embedding LLMs rather than the protocol connecting tools/data. After starts closer to the glossary but ends with repetitive unsupported LLM-to-LLM wording. |
-| paraphrase/mcp | partial | incorrect | correct | Before is vague about context exchange; after incorrectly suggests deterministic matching inputs/outputs across tools. Neither should be treated as fully correct solely because of a keyword score. |
-| absent_term/01 | coverage_violation | coverage_violation | correct | The term is absent from this course glossary. Both neural answers set needs_review=false; the task requires true regardless of any real-world definition. Lookup correctly abstains. |
-| absent_term/02 | coverage_violation | coverage_violation | correct | The term is absent from this course glossary. Both neural answers set needs_review=false; the task requires true regardless of any real-world definition. Lookup correctly abstains. |
-| absent_term/03 | coverage_violation | coverage_violation | correct | The term is absent from this course glossary. Both neural answers set needs_review=false; the task requires true regardless of any real-world definition. Lookup correctly abstains. |
-| absent_term/04 | coverage_violation | coverage_violation | correct | The term is absent from this course glossary. Both neural answers set needs_review=false; the task requires true regardless of any real-world definition. Lookup correctly abstains. |
-| absent_term/05 | coverage_violation | coverage_violation | correct | The term is absent from this course glossary. Both neural answers set needs_review=false; the task requires true regardless of any real-world definition. Lookup correctly abstains. |
-| absent_term/06 | coverage_violation | coverage_violation | correct | The term is absent from this course glossary. Both neural answers set needs_review=false; the task requires true regardless of any real-world definition. Lookup correctly abstains. |
+| known_term/lora | 一部一致 | 誤り | 一致 | 学習前は仕組みの説明が不十分です。学習後は「最良の重みだけを保存する」という用語集にない説明になり、基礎モデルの固定と低ランク更新を説明できていません。 |
+| paraphrase/lora | 誤り | 誤り | 一致 | 学習前後とも、固定する重みの対象を取り違えています。キーワード採点には両方とも合格しました。LoRAは事前学習済みの重みを固定し、追加した低ランク行列を学習します。 |
+| known_term/qlora | 誤り | 誤り | 一致 | 学習前はQLoRAをQuantum LoRAとしています。学習後も基礎モデルの量子化を説明せず、パラメータの選択や学習率を下げる方法として説明しています。 |
+| paraphrase/qlora | 誤り | 誤り | 一致 | 学習前は量子化の対象をアダプタと誤り、学習後は4/8ビットをパラメータ数と混同しています。自動評価の悪化は、学習前が意味的に正しかったことを示しません。 |
+| known_term/token | 誤り | 一部一致 | 一致 | 学習前は金銭的な意味のtokenを回答しています。学習後はテキストの単位という冒頭は改善しましたが、Pydantic AIの動作や設定名について根拠のない説明を加えています。 |
+| paraphrase/token | 誤り | 誤り | 誤り | 学習前はtoken countsやtoken limitsと答え、APIの説明を付け加えています。学習後も質問を繰り返し、payloadについて根拠のない説明をしています。検索もTokenではなくAPIに一致して誤りました。 |
+| known_term/learning-rate | 一部一致 | 一部一致 | 一致 | 更新の大きさという中心部分は両方にあります。ただし学習前はlr=0.01を常に重みの1%の更新と解釈し、学習後は用語集の「不安定になる」という注意を根拠なく過学習に置き換えています。 |
+| paraphrase/learning-rate | 一致 | 一部一致 | 誤り | 学習前のLearning Rateは質問に直接答えていますが、定義文を求めるキーワード規則では不合格でした。学習後は定義に過学習の説明を加えています。検索は暗示された用語を見つけられず、誤って確認を求めました。 |
+| known_term/epoch | 誤り | 一致 | 一致 | 学習前は一般的な時間区分や天文学の意味でした。学習後は訓練データを一度通すことと、エポック数が多すぎる場合の過学習を正しく説明しています。 |
+| paraphrase/epoch | 誤り | 一部一致 | 誤り | 学習前はTraining setと回答しています。学習後はepochを示しましたが、Pydantic AIのバージョン固有の呼び方を根拠なく付け加えています。検索は暗示された用語を見つけられませんでした。 |
+| known_term/mcp | 誤り | 一部一致 | 一致 | 学習前はLLMを組み込む仕組みという説明に偏っています。学習後の冒頭は用語集に近づきましたが、最後にLLM同士の接続を繰り返す根拠のない文があります。 |
+| paraphrase/mcp | 一部一致 | 誤り | 一致 | 学習前はコンテキスト交換について曖昧な説明でした。学習後はツールが変わっても同じ入出力になるという誤った説明です。キーワードだけで回答全体を正しいとは判断できません。 |
+| absent_term/01 | 対象範囲外への断定 | 対象範囲外への断定 | 一致 | この用語は講義の用語集に掲載されていません。学習前後ともneeds_review=falseですが、課題の規則では一般知識の有無にかかわらずtrueが必要です。検索は正しく確認を求めました。 |
+| absent_term/02 | 対象範囲外への断定 | 対象範囲外への断定 | 一致 | この用語は講義の用語集に掲載されていません。学習前後ともneeds_review=falseですが、課題の規則では一般知識の有無にかかわらずtrueが必要です。検索は正しく確認を求めました。 |
+| absent_term/03 | 対象範囲外への断定 | 対象範囲外への断定 | 一致 | この用語は講義の用語集に掲載されていません。学習前後ともneeds_review=falseですが、課題の規則では一般知識の有無にかかわらずtrueが必要です。検索は正しく確認を求めました。 |
+| absent_term/04 | 対象範囲外への断定 | 対象範囲外への断定 | 一致 | この用語は講義の用語集に掲載されていません。学習前後ともneeds_review=falseですが、課題の規則では一般知識の有無にかかわらずtrueが必要です。検索は正しく確認を求めました。 |
+| absent_term/05 | 対象範囲外への断定 | 対象範囲外への断定 | 一致 | この用語は講義の用語集に掲載されていません。学習前後ともneeds_review=falseですが、課題の規則では一般知識の有無にかかわらずtrueが必要です。検索は正しく確認を求めました。 |
+| absent_term/06 | 対象範囲外への断定 | 対象範囲外への断定 | 一致 | この用語は講義の用語集に掲載されていません。学習前後ともneeds_review=falseですが、課題の規則では一般知識の有無にかかわらずtrueが必要です。検索は正しく確認を求めました。 |
 
-## References
+## 参照
 
-- [Course glossary used in the experiment](../../advanced/glossary.json)
-- [Raw before answers](eval_before.json)
-- [Raw after answers](eval_after.json)
-- [Raw lookup answers](eval_retrieval.json)
-- [LoRA original paper](https://arxiv.org/abs/2106.09685)
-- [QLoRA original paper](https://arxiv.org/abs/2305.14314)
+- [実験に使った用語集](../../advanced/glossary.json)
+- [学習前の元の回答](eval_before.json)
+- [学習後の元の回答](eval_after.json)
+- [元の検索結果](eval_retrieval.json)
+- [LoRA原論文](https://arxiv.org/abs/2106.09685)
+- [QLoRA原論文](https://arxiv.org/abs/2305.14314)

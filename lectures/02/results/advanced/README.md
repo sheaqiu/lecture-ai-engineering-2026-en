@@ -1,15 +1,15 @@
-# Advanced run evidence
+# Advanced実験の記録
 
-These files were exported from the student's Colab run `20261107T045051Z_3b9000` and checked against the prepared materials.
+私がColabで実行した `20261107T045051Z_3b9000` の結果を保存し、実験に使用した資材と照合しました。照合と記録の整理にはCodexの補助を利用しました。
 
-- Original archive: `advanced_results_20261107T045051Z_3b9000.zip`
-- Archive SHA-256: `42448660f57742793e009faf7984f41d60fa5404d370f570c90e973368602df2`
-- Raw exports preserved unchanged: `result.json`, the three `eval_*.json` files, `training.json`, `training_log.json`, and `manual_review.csv`.
-- Prepared runtime materials are byte-identical to the files in [the Advanced materials directory](../../advanced/); their hashes are also recorded in `result.json`.
-- `verification.json` records the checks of material hashes, per-question scores, summaries, regression list, and training log consistency.
-- `training_console_summary.json` preserves numbers supplied from the training console, including the trainable parameter fraction.
-- `manual_review_assisted.md` and `.json` contain a subsequent, explicitly AI-assisted semantic comparison for all 18 questions.
+- 元のZIP：`advanced_results_20261107T045051Z_3b9000.zip`
+- ZIPのSHA-256：`42448660f57742793e009faf7984f41d60fa5404d370f570c90e973368602df2`
+- 元のまま保存した出力：`result.json`、3つの `eval_*.json`、`training.json`、`training_log.json`、`manual_review.csv`。
+- 実行時の資材は [Advancedの資材ディレクトリ](../../advanced/) とバイト単位で一致し、ハッシュ値も `result.json` に記録されています。
+- `verification.json`：資材のハッシュ、各回答の採点、集計、悪化した問題の一覧、学習ログの整合性を確認した記録。
+- `training_console_summary.json`：学習対象パラメータの割合など、私が共有したコンソール出力の数値。
+- `manual_review_assisted.md` と `.json`：18問すべてについて、Codexの補助を受けて回答内容を照合した後続の記録。
 
-The original `manual_review.csv` is blank because it was exported before the subsequent assisted review. Likewise, `result.json` retains its export-time review status. Follow-up analysis is kept separately rather than modifying raw evidence. The source manifest's preparation-status label describes the materials at preparation time; completed training is recorded in the top-level run metrics and training files.
+元の `manual_review.csv` の確認欄が空白なのは、内容の照合より前に出力したためです。`result.json` の確認状況も出力時点のまま保持しています。後続の分析は別のファイルに保存し、元の証拠を書き換えていません。資材manifestの準備状況は資材作成時点を表しており、実際の学習完了は実験全体の集計と学習結果ファイルに記録されています。
 
-The original ZIP and its full extracted snapshot, including all materials and the generated report draft, are also retained locally. Model weights and checkpoints were not included in the exported ZIP.
+元のZIPと全展開内容（実行資材と自動生成されたレポート案を含む）はローカルにも保存しました。モデルの重みとチェックポイントは、出力ZIPには含まれていません。

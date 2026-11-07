@@ -1,142 +1,149 @@
-# Lecture 02 Answers
+# 第2回 演習・課題レポート
 
-## Exercises
+## 演習（Exercises）
 
-### Original FAQ experiment
+### 講義のFAQ実験の再現
 
-I ran the original course notebook and exported its results. This section reports the original FAQ task, in which the FAQ was included in the model input. The glossary homework below is a separate closed-book experiment with different questions.
+私は講義のノートブックを実行し、LoRA学習の前後の回答を比較して結果を保存しました。この演習ではFAQ本文がモデルへの入力に含まれています。後述するAdvanced課題は、用語の定義を入力に与えずに回答させる別の実験です。
 
-- Model: `Qwen/Qwen3.5-0.8B`, revision `2fc06364715b967f1860aea9cf38778875588b17`.
-- Method: LoRA without quantization; `r=16`, `lora_alpha=32`, learning rate `2e-4`, 20 epochs, seed 42.
-- Generation: greedy (`do_sample=false`), maximum 96 new tokens.
-- Training executed personally: **Yes** (`executed_training_myself=true`).
+- モデル：`Qwen/Qwen3.5-0.8B`
+- revision：`2fc06364715b967f1860aea9cf38778875588b17`
+- 学習方法：量子化なしのLoRA。`r=16`、`lora_alpha=32`、学習率 `2e-4`、20エポック、seed 42。
+- 生成条件：`do_sample=false`、最大96新規トークン。
+- 自分で学習を実行したか：**はい**（`executed_training_myself=true`）。
 
-| Metric | Before training | After training |
+| 指標 | 学習前 | 学習後 |
 |---|---:|---:|
-| JSON format compliance | 20/21 (95.24%) | 21/21 (100%) |
-| Content pass under the course keyword rules | 8/21 (38.10%) | 20/21 (95.24%) |
-| Both format and content pass | 8/21 (38.10%) | 20/21 (95.24%) |
+| JSON形式の合格数 | 20/21（95.24%） | 21/21（100%） |
+| 講義のキーワード基準による内容合格数 | 8/21（38.10%） | 20/21（95.24%） |
+| 形式・内容の両方に合格した数 | 8/21（38.10%） | 20/21（95.24%） |
 
-There were no automatic regressions. The remaining failed question was **“Do office hours require an appointment?”** The model returned the Tuesday office-hours schedule with `needs_review=false`. The FAQ supplies a schedule but does not specify appointment requirements, so this response does not establish the requested fact. Before training, some other responses contained useful answer text but used an incorrect review flag; one response omitted `needs_review` entirely.
+自動評価で、学習前に合格して学習後に不合格となった問題はありませんでした。学習後に残った誤りは「オフィスアワーには予約が必要か」という質問です。モデルは火曜日の開催時間を回答し、`needs_review=false` としました。しかし、FAQには開催時間しか書かれておらず、予約の要否は判断できません。
 
-### Knowledge questions from original section 6
+学習前には、回答文に正しい情報が含まれていても、確認フラグを誤って付けた例がありました。また、`needs_review` 自体が欠けた回答も1件ありました。
 
-| Question | Before classification | After classification | Observation |
+### 元の第6節の知識質問
+
+| 質問 | 学習前の分類 | 学習後の分類 | 観察 |
 |---|---|---|---|
-| Final assignment deadline | asserted | asserted | Reuses the ordinary assignment deadline, although the exercise labels the final-assignment question as unsupported. |
-| Instructor's name | needs_review | needs_review | Changes from `None` to a clear confirmation-needed response. |
-| Topic of the next lecture | needs_review | needs_review | Continues requesting confirmation, with wording closer to the training target. |
-| Ordinary assignment deadline, as a control | asserted | asserted | Correctly answers from the FAQ. |
+| 最終課題の締切 | asserted | asserted | 通常の課題の締切を流用した。演習では、最終課題の締切はFAQに根拠がない質問として扱われている。 |
+| 講師名 | needs_review | needs_review | `None` から、確認が必要であることを明示する回答に変わった。 |
+| 次回講義のテーマ | needs_review | needs_review | 引き続き確認を求め、学習後は表現が学習目標に近づいた。 |
+| 通常の課題の締切（対照） | asserted | asserted | FAQにある締切を回答した。 |
 
-The fictional FAQ's ordinary assignment deadline does not establish an explicit deadline for a final assignment. This is an evidence-boundary distinction within the exercise, not a claim about the real course deadline.
+このFAQは架空の実験データです。通常の課題の締切だけでは、最終課題の締切まで確定できません。ここでは演習内の根拠の範囲を確認しており、実際の講義の締切を示しているわけではありません。
 
-Training improved the task's format, answer wording, and many review-flag decisions, but it did not eliminate unsupported assertions. Format compliance and reliable evidence assessment are different capabilities.
+学習によって形式や表現、多くの確認が必要かどうかの判断は改善しましたが、根拠がない内容を断定する問題は残りました。形式に従うことと、根拠の有無を正しく判断することは別の能力だと分かりました。
 
-Evidence: [original result](results/faq_baseline/result.json), [before answers](results/faq_baseline/eval_before.json), [after answers](results/faq_baseline/eval_after.json).
+実験記録：[集計結果](results/faq_baseline/result.json)、[学習前の回答](results/faq_baseline/eval_before.json)、[学習後の回答](results/faq_baseline/eval_after.json)。
 
-## Homework
+## 課題（Homework）
 
-**Level attempted: Advanced.**
+**選択したレベル：Advanced**
 
-### Data and implementation
+### 目的とデータの準備
 
-The source was the repository's [course glossary](../../data/glossary.json), at course-source commit `2a89014410768f2307a72d0727d1c6bdb29cd726`. It contains 58 entries and is explicitly marked as a draft glossary.
+私は、講義の用語集を使ってLoRA学習を行い、学習前後の回答と、用語集を直接検索する方法を比較しました。データの出典はリポジトリの [data/glossary.json](../../data/glossary.json) です。使用した講義資料のコミットは `2a89014410768f2307a72d0727d1c6bdb29cd726` で、用語集には58項目があり、草案であることが明記されています。
 
-Codex ran the supplied `scripts/make_sft_dataset.py` to generate 116 `messages` records: “What is {term}?” and “Briefly explain {term}.” for each entry, using its definition as the answer. The [original script output](advanced/glossary_sft.jsonl) was preserved. To retain the course's structured-answer task, the definitions were wrapped as JSON with `answer` and `needs_review=false`, and the same system instruction was added to training and evaluation. Eight negative training examples about unlisted terms were added, with a confirmation-needed answer and `needs_review=true`.
+講義の `scripts/make_sft_dataset.py` から生成した116件の問答を使いました。各用語に対して「What is {term}?」「Briefly explain {term}.」という2種類の質問を作り、用語集の定義を回答にしています。[元の生成結果](advanced/glossary_sft.jsonl) も保存しました。
 
-| Split | Records | Purpose |
+講義と同じ構造化回答を評価できるよう、定義を `answer` と `needs_review=false` を持つJSONに変換し、学習と評価で共通のシステム指示を付けました。さらに、未掲載用語について確認を求める負例を8件追加しました。負例では `needs_review=true` とします。
+
+| データ | 件数 | 内容 |
 |---|---:|---|
-| Training | 124 | 116 glossary question/definition pairs plus 8 unlisted-term questions. |
-| Validation | 12 | 8 known-term questions in another wording and 4 different unlisted terms. |
-| Test | 18 | 6 named-term questions, 6 paraphrases, and 6 further unlisted terms. |
+| 学習用 | 124 | 用語集の問答116件と、未掲載用語の質問8件。 |
+| 検証用 | 12 | 既知用語の別の聞き方8件と、別の未掲載用語4件。 |
+| テスト用 | 18 | 用語名を直接聞く質問6件、言い換え質問6件、さらに別の未掲載用語6件。 |
 
-Exact and normalized question texts are disjoint across the splits. Known concepts occur in both training and testing: this evaluates wording generalization and coverage handling, not the acquisition of entirely unseen concepts. The unlisted terms are disjoint across training, validation, and testing.
+質問文は、表記を正規化した場合も含めて、データ分割間で重複しないようにしました。一方、既知用語の概念自体は学習用とテスト用で共有しています。したがって、これは既知概念の新しい聞き方への対応と、用語集の対象範囲の判断を見る実験です。未掲載用語は学習・検証・テストで別々に選んでいます。
 
-The six known test concepts are LoRA, QLoRA, Token, Learning rate, Epoch, and MCP. Unlisted test terms are DPO, RoPE, FlashAttention, MoE, KV cache, and speculative decoding. Here **unlisted** means absent as an entry in this course glossary. A model may know a real-world definition and still violate the task's coverage rule by answering without requesting review.
+既知用語のテストは、LoRA、QLoRA、Token、Learning rate、Epoch、MCPです。未掲載用語のテストは、DPO、RoPE、FlashAttention、MoE、KV cache、speculative decodingです。ここでの「未掲載」は、この用語集の項目にないという意味です。モデルが一般知識として定義を知っていても、本実験の規則では確認を求める必要があります。
 
-The neural model answers **closed book**: its input contains only the shared system instruction and the question. It does not receive glossary definitions, reference answers, term IDs, or per-question coverage labels. The reference answers and expected review flags remain in a separate [gold file](advanced/gold.json).
+モデルは用語集を見ずに回答します。入力は共通のシステム指示と質問だけで、用語の定義、正解、用語ID、各質問の掲載有無は与えません。正解と期待する確認フラグは別の [goldファイル](advanced/gold.json) に保持しました。
 
-Implementation: [Colab notebook](../../notebooks/lora_glossary_advanced.ipynb), [data/scoring/lookup helper](advanced/advanced_glossary.py), [test questions](advanced/test.jsonl), [data manifest](advanced/manifest.json).
+実装：[Colabノートブック](../../notebooks/lora_glossary_advanced.ipynb)、[データ処理・採点・検索処理](advanced/advanced_glossary.py)、[テスト問題](advanced/test.jsonl)、[データ作成条件](advanced/manifest.json)。
 
-### Fixed training settings
+### 学習設定と実行結果
 
-The model and revision, unquantized float32 base weights, rank, alpha, learning rate, and seed were retained from the course. The first experiment used **3 epochs** instead of the FAQ experiment's 20 because its training set is larger (124 versus 14 records). With batch size 4 and gradient accumulation 2, this produced 48 updates. Maximum generation length was increased from 96 to 192 tokens to accommodate glossary definitions.
+モデルとrevision、量子化しないfloat32の基礎モデル、LoRAのrankとalpha、学習率、seedは講義の設定を使いました。学習データが元のFAQの14件から124件に増えたため、最初の実験では学習回数を20エポックから **3エポック** にしました。バッチサイズ4、勾配蓄積2で、実際に48回の更新が行われました。定義文を出力できるよう、最大生成長は96から192トークンに変更しました。
 
-| Setting or measurement | Value |
+| 設定・測定項目 | 値 |
 |---|---:|
 | LoRA rank / alpha | 16 / 32 |
-| Learning rate / seed | 0.0002 / 42 |
-| Epochs / optimizer updates | 3 / 48 |
-| Trainable parameter fraction, from the console | 0.8421% |
-| Maximum measured train/validation record length | 237 tokens, below the 512-token limit |
-| Training time | 205.98 seconds |
-| Average training loss over the run | 0.763707 |
-| Last logged training loss | 0.358351 |
-| Validation loss after training | 0.382231 |
+| 学習率 / seed | 0.0002 / 42 |
+| エポック数 / 更新回数 | 3 / 48 |
+| 学習対象パラメータの割合（実行ログ） | 0.8421% |
+| 学習・検証データの最大長 | 237トークン（上限512） |
+| 学習時間 | 205.98秒 |
+| 学習全体の平均loss | 0.763707 |
+| 最後に記録された学習loss | 0.358351 |
+| 学習後の検証loss | 0.382231 |
 
-The logged training loss decreased from 2.396908 at step 4 to 0.358351 at step 48. The last logged loss describes a logging window; it is not the same quantity as the average loss over the whole run. Validation was performed after training, with no checkpoint selection or hyperparameter search against the test set.
+学習ログのlossは、step 4の2.396908からstep 48の0.358351に下がりました。最後の学習lossはログの集計区間の値で、学習全体の平均lossとは異なります。検証は学習終了後に行い、テスト結果を使ったチェックポイント選択やハイパーパラメータ探索は行っていません。
 
-A bookkeeping bug in the token-length check initially counted the fields of a tokenizer return dictionary. Before training, it was corrected by setting `return_dict=false` in `apply_chat_template`; the measured maximum was then 237. The correction did not change the evaluation prompts or model outputs. The GitHub notebook contains the corrected check.
+実行時には、トークン長の確認処理が戻り値の辞書の項目数を数えてしまう問題がありました。学習前に `apply_chat_template` に `return_dict=False` を指定して修正し、最大長が237であることを確認しました。この修正は長さの確認処理だけに関係し、評価時の入力や回答は変更していません。GitHubのノートブックにも修正を反映しました。
 
-Evidence: [training metrics](results/advanced/training.json), [training log](results/advanced/training_log.json), [console summary](results/advanced/training_console_summary.json).
+実験記録：[学習結果](results/advanced/training.json)、[学習ログ](results/advanced/training_log.json)、[コンソール出力の記録](results/advanced/training_console_summary.json)。
 
-### Evaluation and results
+### 評価方法と比較結果
 
-The same 18 questions, system instruction, greedy generation parameters, and precision were used before and after training. A strict format check requires exactly `answer` as a string and `needs_review` as a boolean. Content scoring checks the review flag and case-insensitive groups of keywords. These are **keyword-based task scores**, not a complete assessment of factual correctness.
+学習前後で同じ18問、同じシステム指示、同じ貪欲生成の条件と精度を使いました。形式の評価では、JSONに文字列の `answer` と真偽値の `needs_review` が過不足なく含まれることを確認します。内容の自動評価では、確認フラグと、大文字・小文字を区別しないキーワード群を確認します。これは **キーワードに基づく課題の評価値** であり、回答全体の事実の正しさを完全に表すものではありません。
 
-The comparison system is a simple lexical glossary lookup: it matches whole normalized term names or aliases, returns the longest matching entry's definition, and requests review if no entry matches. It has direct access to the glossary. This is a different information-access strategy from the neural model's closed-book answering, and is not a full semantic retrieval or RAG system.
+比較対象の検索処理は、正規化した用語名・別名を単語単位で照合し、最も長く一致した項目の定義を返す単純な方法です。一致しなければ確認を求めます。検索処理は用語集を直接参照できます。用語集を入力に与えないモデルとは情報へのアクセス方法が異なり、意味検索や完全なRAGシステムを比較した実験ではありません。
 
-| Metric | Before LoRA | After LoRA | Lexical lookup |
+| 指標 | 学習前 | 学習後 | 単純な用語検索 |
 |---|---:|---:|---:|
-| Format pass | 18/18 (100%) | 18/18 (100%) | 18/18 (100%) |
-| Keyword content pass | 5/18 (27.78%) | 7/18 (38.89%) | 15/18 (83.33%) |
-| Named-term questions | 1/6 | 3/6 | 6/6 |
-| Paraphrased questions | 4/6 | 4/6 | 3/6 |
-| Unlisted-term questions | 0/6 | 0/6 | 6/6 |
-| Evaluation time for 18 questions | 69.35 s | 69.41 s | 0.06 s |
+| 形式の合格数 | 18/18（100%） | 18/18（100%） | 18/18（100%） |
+| キーワードによる内容合格数 | 5/18（27.78%） | 7/18（38.89%） | 15/18（83.33%） |
+| 用語名を直接聞く問題 | 1/6 | 3/6 | 6/6 |
+| 言い換え問題 | 4/6 | 4/6 | 3/6 |
+| 未掲載用語の問題 | 0/6 | 0/6 | 6/6 |
+| 18問の評価時間 | 69.35秒 | 69.41秒 | 0.06秒 |
 
-Four questions improved under the fixed automatic scorer and two regressed, for a net gain of two questions (11.11 percentage points). Format compliance was already 100%, so this run provides no measured format gain. All six unlisted terms still received `needs_review=false` after training.
+固定した自動評価では4問が改善し、2問が悪化したため、合格数は差し引き2問増えました。割合では11.11ポイントの改善です。形式は学習前から100%だったため、この実験では形式の改善は観測されませんでした。未掲載用語の6問は、学習後もすべて `needs_review=false` でした。
 
-The automatic regressions were:
+自動評価で悪化したのは、次の2問です。
 
-- “How does Quantized LoRA reduce the memory needed for adaptation?”
-- “What does the Model Context Protocol standardize between AI applications and external systems?”
+- QLoRAが適応時のメモリ使用量をどう減らすか（`paraphrase/qlora`）。
+- MCPがAIアプリケーションと外部システムの間で何を標準化するか（`paraphrase/mcp`）。
 
-These are regressions under the automatic scoring rule. They should not be described as transitions from factually correct answers to incorrect answers without inspecting the original text.
+これは自動評価の合否が変わったという意味です。元の回答を読むと、学習前にも概念上の誤りがあるため、そのまま「正しい回答が誤った回答に変わった」とは解釈できません。
 
-Evidence: [full result](results/advanced/result.json), [before outputs](results/advanced/eval_before.json), [after outputs](results/advanced/eval_after.json), [lookup outputs](results/advanced/eval_retrieval.json).
+実験記録：[全体の結果](results/advanced/result.json)、[学習前の回答](results/advanced/eval_before.json)、[学習後の回答](results/advanced/eval_after.json)、[検索結果](results/advanced/eval_retrieval.json)。
 
-### AI-assisted inspection of actual answers
+### 回答内容を確認して分かったこと
 
-- **Clear improvement: Epoch.** Before training, the model used a generic time-period/astronomy meaning. Afterward, it correctly described one pass through the entire training dataset and the risk of too many epochs.
-- **Keyword false positive: LoRA.** Both before and after answers to the frozen-weights question claimed that the low-rank matrices are fixed. The correct mechanism freezes pretrained base weights and trains the added low-rank matrices. Both incorrect answers still matched the scorer's keywords. See the [LoRA paper](https://arxiv.org/abs/2106.09685).
-- **Another false positive: QLoRA.** The before answer to the memory question said the adapter weights are quantized; QLoRA's central mechanism uses a frozen, quantized base model and trains LoRA adapters. Thus the automatic regression on this question is not evidence that its before answer was semantically correct. See the [QLoRA paper](https://arxiv.org/abs/2305.14314).
-- **Keyword false negative: Learning rate.** Before training, the question asking which setting controls update size received “Learning Rate.” That directly answers the question, but the scorer required keywords from a full definition and marked it wrong.
-- **Unsupported additions remain.** Several after-training answers add Pydantic AI-specific claims absent from the glossary, or repetitive statements such as the MCP answer's repeated “LLM to the LLM.” A useful first sentence does not make the entire answer reliable.
-- **Coverage failure: DPO and the other unlisted terms.** The model continues providing definitions with `needs_review=false`; the task requires a review request because the source glossary has no entry. This conclusion does not depend on evaluating the real-world correctness of each definition.
+回答内容はCodexの補助を受けて用語集と照合し、自動評価とは別に整理しました。
 
-The [complete AI-assisted review](results/advanced/manual_review_assisted.md) records qualitative judgments for every test question separately from the automatic scores. No additional manual accuracy percentage is claimed. The original exported files are preserved unchanged.
+- **Epochは明確に改善しました。** 学習前は一般的な時間区分や天文学の意味を回答していましたが、学習後は訓練データ全体を一度通すことと、エポック数が多すぎる場合の過学習を説明できました。
+- **LoRAでは自動評価が誤りを見逃しました。** 学習前後とも、低ランク行列が固定されると回答しています。実際には事前学習済みの基礎モデルの重みを固定し、追加した低ランク行列を学習します。誤った回答にも採点用キーワードが含まれていたため、両方とも自動評価に合格しました。[LoRA原論文](https://arxiv.org/abs/2106.09685)。
+- **QLoRAにも同様の見逃しがありました。** 学習前の回答は、量子化する対象をアダプタの重みとしていました。QLoRAの中心は、固定した量子化済み基礎モデルを通してLoRAアダプタを学習することです。この問題の自動評価上の悪化は、学習前の内容が正しかったことを意味しません。[QLoRA原論文](https://arxiv.org/abs/2305.14314)。
+- **Learning rateには過度に厳しい採点がありました。** 更新の大きさを決める設定は何かという質問に、学習前のモデルは「Learning Rate」と答えており、質問には答えています。しかし採点規則が定義文のキーワードを要求したため、不合格となりました。
+- **根拠のない補足は残りました。** 学習後の回答にも、用語集にないPydantic AI固有の説明や、MCPの回答における「LLM to the LLM」の繰り返しがありました。冒頭に正しい内容があっても、回答全体が信頼できるとは限りません。
+- **未掲載用語への対応は改善しませんでした。** DPOなどには用語集の項目がないため、本実験では確認を求める必要があります。しかしモデルは学習前後とも定義を説明し、`needs_review=false` としました。この判断は、各説明の一般的な正しさとは別に評価できます。
 
-### Fine-tuning compared with searching the glossary
+[18問すべての照合記録](results/advanced/manual_review_assisted.md) は自動評価と分けて保存しました。追加の「手動正解率」は算出していません。元の結果ファイルはそのまま保持しています。
 
-For this particular source-based definition task, direct lookup produced the stronger overall keyword score, returned stored definitions, and enforced the coverage rule for all six unlisted test terms. Its content can be updated by editing the glossary rather than retraining a model. Its JSON format is constructed by code, so its 100% format score is not a learned model capability.
+### 微調整と用語集検索の比較
 
-Lookup also has a clear weakness: it needs recognizable names or aliases. For the implicit Token question, it matched the incidental word “API” and returned the wrong entry. It missed the Learning rate and Epoch paraphrases and incorrectly requested review. More aliases or semantic retrieval might help, but they were not evaluated here.
+今回のように出典が決まった定義を答える課題では、単純な検索の方が全体の自動評価値は高く、未掲載用語6問のすべてで確認を求められました。用語集を直接返すため、定義を確認しやすく、内容の更新もモデルの再学習ではなく用語集の編集で行えます。JSONはプログラムが作成するので、検索の形式合格率100%はモデルが学習した能力を示すものではありません。
 
-Fine-tuning can be useful for output conventions, tone, and recurring task behavior, and can sometimes handle language variation without supplying a source document at inference. In this run, the Epoch definition improved, but many answers still mixed correct ideas with unsupported claims, and the coverage behavior did not improve. It would therefore be inappropriate to use this adapter as a reliable store of the course glossary without further evaluation. For definitions that require traceability, frequent updates, or clear source coverage, a lookup/retrieval design is a better fit for the observed needs.
+一方、単純な検索は用語名や別名を認識できないと失敗します。Tokenの言い換え問題では、質問中の「API」に反応してAPIの定義を返しました。Learning rateとEpochの言い換えでは用語を見つけられず、誤って確認を求めました。別名の追加や意味検索で改善する可能性はありますが、今回は検証していません。
 
-The observed times show the cost difference in this small run, not a general serving benchmark: the neural systems and the lexical program have different computational workloads, and model-loading time is not included in those evaluation times.
+微調整は、出力形式、文体、繰り返し行うタスクの振る舞いを学習させたい場合に役立つと考えます。入力に資料を渡さずに回答できる可能性もあります。ただし今回はEpochの改善が見られた一方で、概念の混同や根拠のない補足が残り、対象範囲の判断も改善しませんでした。この結果だけで、学習済みアダプタを信頼できる用語集の代わりとして使うことはできません。出典の確認、頻繁な更新、対象範囲の明確さが必要な用途では、今回観測した要件に検索の方が合っています。
 
-### Limitations and conclusion
+実測時間は、この小規模な1回の実験の記録です。モデルと検索処理では計算内容が異なり、評価時間にモデルの読み込み時間は含まれないため、一般的なサービス性能の比較ではありません。
 
-This is one fixed, short training run on a small dataset and 18 test questions. Known concepts are shared across training and testing, the glossary itself is a draft, and keyword matching has both false positives and false negatives. The lookup system has direct source access while the neural model is closed book. These choices must be considered when comparing the results.
+### 限界と考察
 
-The run does not isolate whether the limited benefit comes primarily from the model, training duration, data composition, or task design. More controlled experiments would be needed to identify the cause. Lower training and validation loss alone does not establish factual accuracy, coverage awareness, or the presence of overfitting.
+今回は小規模なデータと18問の固定テストによる、1回の短い学習実験です。学習とテストで既知概念を共有し、用語集自体も草案です。キーワード採点には見逃しと過度に厳しい判定の両方がありました。また、検索処理は用語集を直接参照でき、モデルは参照せずに答えるという条件の違いがあります。
 
-Under these conditions, LoRA improved the automatic content score modestly, while format compliance stayed unchanged and all unlisted-term review decisions remained wrong. The main practical lesson is to inspect actual answers and evidence boundaries alongside aggregate metrics, and to choose fine-tuning or retrieval according to the behavior and source requirements of the task.
+改善が限られた主な原因が、モデル、学習回数、データ構成、課題設計のどれにあるかは、この実験だけでは分かりません。原因を調べるには条件を分けた追加実験が必要です。学習lossや検証lossの低下だけでは、事実の正しさ、対象範囲の判断、過学習の有無までは確定できません。
 
-### Personal execution and AI assistance
+今回の条件では、LoRAによって自動内容評価は少し改善しましたが、形式は変わらず、未掲載用語の確認が必要かどうかの判断はすべて誤ったままでした。私は、集計値に加えて実際の回答と根拠の範囲を確認し、必要な振る舞いと情報源の要件に応じて微調整と検索を選ぶことが重要だと考えました。
 
-I personally ran the original FAQ notebook and the Advanced Colab experiment, including training, before/after evaluation, and result export. I supplied the outputs and the exported result files for checking.
+### 自分で行ったこととAIの利用
 
-Codex assisted with data generation, evaluation-question and scoring design, notebook implementation, a token-length-check correction, file consistency checks, semantic comparison of the answers, and report drafting. The answer-level judgments above are explicitly AI-assisted; they are not presented as an independent unaided student assessment.
+私は講義のFAQ実験とAdvancedのColab実験を実行し、学習前後の評価、学習の進行、データ数と長さの確認、結果の保存・書き出しを行いました。
+
+コード作成、データ処理、評価設計、回答内容の照合と文章整理にはCodexを補助として利用しました。実験の実行、結果の収集、提出内容の確認は私が担当しています。
