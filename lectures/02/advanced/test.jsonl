@@ -1,0 +1,18 @@
+{"id": "known_term/lora", "category": "known_term", "question": "Give a definition of LoRA."}
+{"id": "paraphrase/lora", "category": "paraphrase", "question": "With Low-Rank Adaptation, which weights stay fixed and which parameters are trained?"}
+{"id": "known_term/qlora", "category": "known_term", "question": "Give a definition of QLoRA."}
+{"id": "paraphrase/qlora", "category": "paraphrase", "question": "How does Quantized LoRA reduce the memory needed for adaptation?"}
+{"id": "known_term/token", "category": "known_term", "question": "Give a definition of Token."}
+{"id": "paraphrase/token", "category": "paraphrase", "question": "What are the small pieces of text used to count an LLM's input length and API charges?"}
+{"id": "known_term/learning-rate", "category": "known_term", "question": "Give a definition of Learning rate."}
+{"id": "paraphrase/learning-rate", "category": "paraphrase", "question": "Which training setting controls how far model parameters move in a single update?"}
+{"id": "known_term/epoch", "category": "known_term", "question": "Give a definition of Epoch."}
+{"id": "paraphrase/epoch", "category": "paraphrase", "question": "What do we call one complete pass through every training example?"}
+{"id": "known_term/mcp", "category": "known_term", "question": "Give a definition of MCP (Model Context Protocol)."}
+{"id": "paraphrase/mcp", "category": "paraphrase", "question": "What does the Model Context Protocol standardize between AI applications and external systems?"}
+{"id": "absent_term/01", "category": "absent_term", "question": "Give a definition of Direct Preference Optimization (DPO)."}
+{"id": "absent_term/02", "category": "absent_term", "question": "Give a definition of Rotary Position Embedding (RoPE)."}
+{"id": "absent_term/03", "category": "absent_term", "question": "Give a definition of FlashAttention."}
+{"id": "absent_term/04", "category": "absent_term", "question": "Give a definition of Mixture of Experts (MoE)."}
+{"id": "absent_term/05", "category": "absent_term", "question": "Give a definition of KV cache."}
+{"id": "absent_term/06", "category": "absent_term", "question": "Give a definition of Speculative decoding."}
